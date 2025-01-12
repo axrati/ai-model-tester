@@ -1,4 +1,4 @@
-# AI Model Tester
+# AI Model Load Tester
 
 Purpose of this repository is to be able to pull/run models against different input sizes to gauge feasibility in different hardware environments.
 
@@ -96,4 +96,4 @@ Some models will not be applied to certain instance types because they dont have
 
 Testing was also done via the `./cli` interface to make sure long times were avoided. Acceptable response time is likely maxed at 2-3 seconds for high throughput needs.
 
-All of the run tests will be found here.
+All outcomes will be noted here, along with a conclusion.
