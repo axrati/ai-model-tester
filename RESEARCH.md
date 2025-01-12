@@ -4,8 +4,6 @@ This is an analysis of open source embedding models in different hardware enviro
 
 ## Models
 
-Models selected for this experiment:
-
 | **Model**                                                                                         | **MTEB Ranking** | **Parameters** | **Dimensions** | **Max Tokens** |
 | ------------------------------------------------------------------------------------------------- | ---------------- | -------------- | -------------- | -------------- |
 | [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                         | 4                | 7.111B         | 4096           | 32,768         |
@@ -16,7 +14,7 @@ Models selected for this experiment:
 | [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)             | 29               | 434M           | 1024           | 8,192          |
 | [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)               | 51               | 137M           | 768            | 8,192          |
 
-## Open AI Reference Point
+### Open AI Reference Point
 
 For comparison to Open AI rankings:
 
