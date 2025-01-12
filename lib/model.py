@@ -62,6 +62,7 @@ class Model:
         self.model = AutoModel.from_pretrained(
             model_name.name, trust_remote_code=True, local_files_only=local_model_force
         )
+        self.model.eval()
         print(f"Loading {model_name.name} complete.", end="\r")
         # Set user device setting
         if device == "auto":
@@ -113,7 +114,7 @@ class Model:
                         [txt], padding=True, truncation=True, return_tensors="pt"
                     ).to(self.device)
                     outputs = self.model(**inputs)
-                embeddings = outputs.last_hidden_state.mean(dim=1)
+                    embeddings = outputs.last_hidden_state.mean(dim=1)
             return True
         except Exception as e:
             print(f"Model embedding failed. \n{str(e)}")
