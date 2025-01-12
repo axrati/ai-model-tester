@@ -149,3 +149,7 @@ Assuming a correlation in performance with other models that have near **137M pa
 ### **4. Significant savings purchasing hardware for on-premise deployment**
 
 The costs seem to be very inflated for GPU instances on AWS. With cost of electricity considered, you can look at around a `2x savings` when you purchase and deploy the hardware yourself.
+
+<br></br>
+<br></br>
+<br></br>
