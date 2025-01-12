@@ -1,6 +1,6 @@
 # Embedding model market analysis
 
-This is an analysis of open source embedding models in different hardware environments. The models selected are ones that have minimal EULA restrictions, high scores on the MTEB, and moderate dimensionality/max-sequence-length.
+This is an analysis of open source embedding models in the market today. The models selected are ones that have minimal EULA restrictions, high scores on the MTEB, and moderate dimensionality/max-sequence-length.
 
 ## Models
 
@@ -60,12 +60,14 @@ Cost to host each model on these instances shown below - this is strictly estima
 
 This model sits at #4 in the MTEB and has 7.1B parameters. It also has a very deep dimensionality of 4096. The innovation in this model is called "In Context Learning", which allows you to send the model `{instruct, query, response}` to prompt different behavior of the model. I feel this can have very big implications for both:
 
-- Disambiguating general terms that are lexically similar but semantically different (ie: river "bank" / finanical "bank" , "ruler" instrument / "ruler" of country)
+- Disambiguating terms that are lexically similar but semantically different (ie: river "bank" / finanical "bank" , "ruler" instrument / "ruler" of country)
 - Targeting towards personalized or context specific embedding spaces. Can largely alter sortings/rankings, seen as similar to `bq` in technologies like SOLR (Apache Lucene)
 
 ### Above average model - [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct)
 
 This model has 1.776B parameters, which deliver high quality embeddings (#17 on the MTEB). It does require higher resources/cost, but can be mitigated by capping the sequence length to a lower maximum (ie: `8192`).
+
+This model also has the same dimensionality as Open AI's ada-002 model. This presents an easy migration strategy for those currently on that model.
 
 ### Noteworthy model - [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)
 
@@ -79,7 +81,7 @@ I think both the models are largely unusuable because of their `512 max sequence
 
 # Experiment Results
 
-This project is ready to run on any hardware spun up - AWS has service quotas on GPU instances, once those are approved I'll publish instance specific results. These take day(s) to go through, so I've done some local benchmarking.
+This project is ready to run on any hardware spun up - AWS has service quotas on GPU instances, once those are approved I'll publish instance specific results. For the time being this was run locally with the below configuration:
 
 ### Cost
 
@@ -135,3 +137,7 @@ Latency scales non-linearly with sequence length, particularly for **Alibaba-NLP
 The highest token processing rate was executed by [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5) with **125K tokens/minute** at **500 sequence length**. This is at the upper bounds of this model's max sequence length, indicating a high stress speed that is adequate for decent volume.
 
 Assuming a correlation in performance with other models that have near **137M parameters**, this may be an adequate GPU for certain use cases.
+
+### **4. Significant savings purchased hardware for on-premise deployment**
+
+The costs seem to be very inflated for GPU instances on AWS. With cost of electricity considered, you can look at around a `2x savings` when you purchase and deploy the hardware yourself.
