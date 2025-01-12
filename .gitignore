@@ -1,8 +1,15 @@
+outputs/*
+implementation
+connect.sh
+copy.sh
+pull.sh
+reporting.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
+.copier
 # C extensions
 *.so
 
@@ -169,3 +176,4 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+

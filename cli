@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+import argparse
+import os
+import requests
+import zipfile
+from io import BytesIO
+from urllib.parse import urlparse
+from lib.model_config import ModelConfig
+from lib.model import Model
+from lib.model_runner import ModelRunner
+import datetime
+import json
+from lib.globals import date_string
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="CLI script for handling model processing."
+    )
+
+    # Required argument
+    parser.add_argument("--name", type=str, required=True, help="Name of the model.")
+
+    # Optional arguments with defaults
+    parser.add_argument("--tokens", type=int, default=100, help="Number of tokens.")
+    parser.add_argument(
+        "--permutations", type=int, default=3, help="Number of permutations."
+    )
+    parser.add_argument("--runs", type=int, default=3, help="Number of runs.")
+    parser.add_argument(
+        "--local",
+        type=bool,
+        default=False,
+        help="Force local model reads (see fetch).",
+    )
+    parser.add_argument(
+        "--device",
+        type=str,
+        default="auto",
+        help="auto | cpu | cuda  - Force device selection for model",
+    )
+    parser.add_argument(
+        "--fetch",
+        type=str,
+        help="URL to fetch a zip file and unzip it. Saves as zip for directory name in `--local`",
+    )
+    parser.add_argument(
+        "--output",
+        type=bool,
+        help="Store output of runs as json file in current directory",
+    )
+
+    args = parser.parse_args()
+
+    if args.fetch:
+        print(f"Fetching from URL: {args.fetch}")
+        fetch_and_unzip(args.fetch)
+
+    mc = ModelConfig(
+        name=args.name,
+        token_lengths=[args.tokens],
+        permutations=args.permutations,
+        runs=args.runs,
+    )
+    model = Model(mc, device="auto", local_model_force=args.local)
+    runner = ModelRunner(model=model, model_config=mc)
+    if args.output:
+        data = runner.data_run()
+        current_datetime_str = date_string(datetime.datetime.now())
+        filename = f"run_____{mc.name.split('/')[len(mc.name.split('/'))-1]}_____{args.tokens}_____{args.runs}_____{args.permutations}_____{current_datetime_str}.json"
+        with open(filename, "w") as f:
+            json.dump(data, f, default=str, indent=4)
+    else:
+        runner.run()
+
+
+def fetch_and_unzip(url: str):
+    """
+    Fetches a zip file from the given URL, downloads it, and extracts it to the current directory.
+
+    Args:
+        url (str): URL of the zip file to fetch.
+    """
+    try:
+        # Parse the URL and validate
+        parsed_url = urlparse(url)
+        if not parsed_url.scheme or not parsed_url.netloc:
+            raise ValueError("Invalid URL provided.")
+
+        print("Fetching the zip file...", end="\r")
+        response = requests.get(url, verify=False, stream=True)
+        response.raise_for_status()
+
+        # Unzip the content to the current directory
+        with zipfile.ZipFile(BytesIO(response.content)) as zip_ref:
+            zip_ref.extractall(os.getcwd())
+
+        print(f"Zip file from {url} successfully downloaded and extracted.", end="\r")
+
+    except Exception as e:
+        print(f"An error occurred while fetching or unzipping the file: {e}")
+
+
+if __name__ == "__main__":
+    main()
