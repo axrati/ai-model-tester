@@ -35,6 +35,5 @@ for mc in models:
     data = runner.data_run()
     # For custom editing
     dictionary_data = [asdict(stat) for stat in data]
-
     with open("sample-output.json", "w") as f:
         json.dump(dictionary_data, f, default=str, indent=4)
