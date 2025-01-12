@@ -43,19 +43,16 @@ Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf
 
 ## Model Cloud Cost
 
-Cost is shown as `hourly / monthly / yearly`. Where you see `-`, the model is unable to run on that instance type:
-
-| **Model**                                                                                         | **Instance GPU (GB)** | **g6.12xlarge**            | **g4dn.12xlarge**         | **g6e.2xlarge**           | **g6e.xlarge**               | **g6.2xlarge**              |
-| ------------------------------------------------------------------------------------------------- | --------------------- | -------------------------- | ------------------------- | ------------------------- | ---------------------------- | --------------------------- |
-| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                         | 96                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | -                         | -                            | -                           |
-| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)     | 96                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | -                         | -                            | -                           |
-| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) | 48                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | -                         | -                            | -                           |
-| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)             | 48                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | $2.242 / $1,614 / $19,640 | $1.861 / $1,339 / $16,302.36 | $0.97 / $703.87 / $8,563.78 |
-| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)               | 48                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | $2.242 / $1,614 / $19,640 | $1.861 / $1,339 / $16,302.36 | $0.97 / $703.87 / $8,563.78 |
-| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                           | 24                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | $2.242 / $1,614 / $19,640 | $1.861 / $1,339 / $16,302.36 | $0.97 / $703.87 / $8,563.78 |
-| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                             | 24                    | $4.6016 / $3,313 / $40,310 | $3.912 / $2,816 / $34,269 | $2.242 / $1,614 / $19,640 | $1.861 / $1,339 / $16,302.36 | $0.97 / $703.87 / $8,563.78 |
-
-<br></br>
+Cost to host each model on these instances shown below - this is strictly estimated adequacy based on experiment outcomes comparing several model parameters/sequence length requirements.
+| **Model** | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
+| ------------------------------------------------------------------------------------------------- | ------------: | --------------: | --------------------- | -------------------------------- | ------------------------------ | ----------------------------- | ----------------------------- |
+| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl) | 4 | 7.111B | 96 | $2,816 / $34,269 | - | - | - |
+| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) | 7 | 7.611B | 96 | $2,816 / $34,269 | - | - | - |
+| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) | 17 | 1.776B | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | - |
+| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5) | 29 | 434M | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
+| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5) | 51 | 137M | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
+| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) | 47 | 335M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
+| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5) | 55 | 109M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
 
 ## Model dispositions
 
@@ -77,8 +74,6 @@ This model has 434M parameters, so its likely to run in lower cost environments.
 ### Lacking in usability models - [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) and [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)
 
 I think both the models are largely unusuable because of their `512 max sequence limitation`.
-
-<br></br>
 
 ## Experiment Results
 
@@ -120,8 +115,6 @@ These performances can be acheieved for `$1600-$2,600 per year`.
 | Alibaba-NLP/gte-base-en-v1.5        |         500 |       0.2780 |       0.5712 |       0.2652 | cuda   |         50 |     107914.00 |
 | Alibaba-NLP/gte-base-en-v1.5        |        1000 |       0.5433 |       0.7942 |       0.4945 | cuda   |         50 |     110436.00 |
 | Alibaba-NLP/gte-base-en-v1.5        |        2500 |       1.4888 |       1.7312 |       1.4515 | cuda   |         50 |     100752.00 |
-
-<br></br>
 
 ## Insights
 
