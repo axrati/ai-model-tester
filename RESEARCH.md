@@ -1,6 +1,6 @@
-# Research
+# Embedding model market analysis
 
-This is an analysis of open source models compared to eachother in different hardware environments. The models selected are ones that have minimal EULA restrictions, high scores on the MTEB, and moderate dimensionality/max-sequence-length.
+This is an analysis of open source embedding models in different hardware environments. The models selected are ones that have minimal EULA restrictions, high scores on the MTEB, and moderate dimensionality/max-sequence-length.
 
 ## Models
 
@@ -41,7 +41,7 @@ Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf
 | g4dn.12xlarge | 64              | 48  | 192      | $3.912                         | $2,816.64            | $34,269.12          |
 | g6.12xlarge   | 96              | 48  | 192      | $4.6016                        | $3,313.15            | $40,310.02          |
 
-## Model Cloud Cost
+## Project Cloud Cost
 
 Cost to host each model on these instances shown below - this is strictly estimated adequacy based on experiment outcomes comparing several model parameters/sequence length requirements.
 | **Model** | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
@@ -54,7 +54,9 @@ Cost to host each model on these instances shown below - this is strictly estima
 | [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) | 47 | 335M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
 | [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5) | 55 | 109M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
 
-## Model dispositions
+<br></br>
+
+# Model dispositions
 
 ### Best in class model - [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)
 
@@ -75,7 +77,9 @@ This model has 434M parameters, so its likely to run in lower cost environments.
 
 I think both the models are largely unusuable because of their `512 max sequence limitation`.
 
-## Experiment Results
+<br></br>
+
+# Experiment Results
 
 This project is ready to run on any hardware spun up - AWS has service quotas on GPU instances, once those are approved I'll publish instance specific results. These take day(s) to go through, so I've done some local benchmarking.
 
@@ -95,36 +99,38 @@ These performances can be acheieved for `$1600-$2,600 per year`.
 
 ### Results
 
-| Model                               | Token Count | Avg Time (s) | Max Time (s) | Min Time (s) | Device | Total Runs | Tokens/Minute |
-| :---------------------------------- | ----------: | -----------: | -----------: | -----------: | :----- | ---------: | ------------: |
-| BAAI/bge-large-en-v1.5              |          10 |       0.2198 |       0.5346 |       0.2116 | cuda   |         50 |       2729.75 |
-| BAAI/bge-large-en-v1.5              |         100 |       0.2418 |       0.5427 |       0.2347 | cuda   |         50 |      24813.90 |
-| BAAI/bge-large-en-v1.5              |         250 |       0.3500 |       0.6408 |       0.3425 | cuda   |         50 |      42857.10 |
-| BAAI/bge-large-en-v1.5              |         500 |       0.7059 |       1.0895 |       0.6574 | cuda   |         50 |      42498.90 |
-| BAAI/bge-base-en-v1.5               |          10 |       0.1301 |       0.4362 |       0.1223 | cuda   |         50 |       4611.84 |
-| BAAI/bge-base-en-v1.5               |         100 |       0.1359 |       0.4573 |       0.1259 | cuda   |         50 |      44150.10 |
-| BAAI/bge-base-en-v1.5               |         250 |       0.1538 |       0.4680 |       0.1352 | cuda   |         50 |      97529.30 |
-| BAAI/bge-base-en-v1.5               |         500 |       0.2390 |       0.5599 |       0.2175 | cuda   |         50 |     125523.00 |
-| Alibaba-NLP/gte-Qwen2-1.5B-instruct |         100 |       0.7124 |       1.0462 |       0.7031 | cuda   |         50 |       8422.23 |
-| Alibaba-NLP/gte-Qwen2-1.5B-instruct |         500 |       2.2133 |       2.4899 |       2.2006 | cuda   |         50 |      13554.40 |
-| Alibaba-NLP/gte-Qwen2-1.5B-instruct |        1000 |       4.2727 |       4.6429 |       4.2241 | cuda   |         50 |      14042.60 |
-| Alibaba-NLP/gte-large-en-v1.5       |         100 |       0.3048 |       0.6040 |       0.2975 | cuda   |         50 |      19685.00 |
-| Alibaba-NLP/gte-large-en-v1.5       |         500 |       0.7731 |       1.0693 |       0.7654 | cuda   |         50 |      38804.80 |
-| Alibaba-NLP/gte-large-en-v1.5       |        1000 |       1.4105 |       1.6820 |       1.4001 | cuda   |         50 |      42538.10 |
-| Alibaba-NLP/gte-base-en-v1.5        |         100 |       0.1705 |       0.4763 |       0.1607 | cuda   |         50 |      35190.60 |
-| Alibaba-NLP/gte-base-en-v1.5        |         500 |       0.2780 |       0.5712 |       0.2652 | cuda   |         50 |     107914.00 |
-| Alibaba-NLP/gte-base-en-v1.5        |        1000 |       0.5433 |       0.7942 |       0.4945 | cuda   |         50 |     110436.00 |
-| Alibaba-NLP/gte-base-en-v1.5        |        2500 |       1.4888 |       1.7312 |       1.4515 | cuda   |         50 |     100752.00 |
+| Model                               | Sequence Length | Avg Time (s) | Max Time (s) | Min Time (s) | Device | Total Runs | Tokens/Minute |
+| :---------------------------------- | --------------: | -----------: | -----------: | -----------: | :----- | ---------: | ------------: |
+| BAAI/bge-large-en-v1.5              |              10 |       0.2198 |       0.5346 |       0.2116 | cuda   |         50 |       2729.75 |
+| BAAI/bge-large-en-v1.5              |             100 |       0.2418 |       0.5427 |       0.2347 | cuda   |         50 |      24813.90 |
+| BAAI/bge-large-en-v1.5              |             250 |       0.3500 |       0.6408 |       0.3425 | cuda   |         50 |      42857.10 |
+| BAAI/bge-large-en-v1.5              |             500 |       0.7059 |       1.0895 |       0.6574 | cuda   |         50 |      42498.90 |
+| BAAI/bge-base-en-v1.5               |              10 |       0.1301 |       0.4362 |       0.1223 | cuda   |         50 |       4611.84 |
+| BAAI/bge-base-en-v1.5               |             100 |       0.1359 |       0.4573 |       0.1259 | cuda   |         50 |      44150.10 |
+| BAAI/bge-base-en-v1.5               |             250 |       0.1538 |       0.4680 |       0.1352 | cuda   |         50 |      97529.30 |
+| BAAI/bge-base-en-v1.5               |             500 |       0.2390 |       0.5599 |       0.2175 | cuda   |         50 |     125523.00 |
+| Alibaba-NLP/gte-Qwen2-1.5B-instruct |             100 |       0.7124 |       1.0462 |       0.7031 | cuda   |         50 |       8422.23 |
+| Alibaba-NLP/gte-Qwen2-1.5B-instruct |             500 |       2.2133 |       2.4899 |       2.2006 | cuda   |         50 |      13554.40 |
+| Alibaba-NLP/gte-Qwen2-1.5B-instruct |            1000 |       4.2727 |       4.6429 |       4.2241 | cuda   |         50 |      14042.60 |
+| Alibaba-NLP/gte-large-en-v1.5       |             100 |       0.3048 |       0.6040 |       0.2975 | cuda   |         50 |      19685.00 |
+| Alibaba-NLP/gte-large-en-v1.5       |             500 |       0.7731 |       1.0693 |       0.7654 | cuda   |         50 |      38804.80 |
+| Alibaba-NLP/gte-large-en-v1.5       |            1000 |       1.4105 |       1.6820 |       1.4001 | cuda   |         50 |      42538.10 |
+| Alibaba-NLP/gte-base-en-v1.5        |             100 |       0.1705 |       0.4763 |       0.1607 | cuda   |         50 |      35190.60 |
+| Alibaba-NLP/gte-base-en-v1.5        |             500 |       0.2780 |       0.5712 |       0.2652 | cuda   |         50 |     107914.00 |
+| Alibaba-NLP/gte-base-en-v1.5        |            1000 |       0.5433 |       0.7942 |       0.4945 | cuda   |         50 |     110436.00 |
+| Alibaba-NLP/gte-base-en-v1.5        |            2500 |       1.4888 |       1.7312 |       1.4515 | cuda   |         50 |     100752.00 |
 
-## Insights
+<br></br>
 
-### **1. Performance variability suggests model stability at higher token counts**
+# Insights
 
-For lower token counts (e.g., **10 to 100 tokens**), there is high variability in tokenization and inference time. This was shown to stabilize at higher token counts (500+).
+### **1. Performance variability suggests model stability at higher sequence lengths**
 
-### **2. Exponential Growth in Latency with Larger Token Counts**
+For lower sequence lengths (e.g., **10 to 100 tokens**), there is high variability in tokenization and inference time. This was shown to stabilize at higher sequence lengths (500+).
 
-Latency scales non-linearly with token count, particularly for **Alibaba-NLP/gte-Qwen2-1.5B-instruct**, where processing 500 tokens takes 2.2 seconds and 1000 tokens takes 4.3 seconds, representing nearly a **2x increase** in time. This exponential growth is evident across all models.
+### **2. Exponential growth in latency with longer sequence lengths**
+
+Latency scales non-linearly with sequence length, particularly for **Alibaba-NLP/gte-Qwen2-1.5B-instruct**, where processing 500 tokens takes 2.2 seconds and 1000 tokens takes 4.3 seconds, representing nearly a **2x increase** in time. This exponential growth is evident across all models.
 
 ### **3. 24GB GPU produces decent tokens per minute rate for [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)**
 
