@@ -39,7 +39,7 @@ Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf
 | g4dn.12xlarge | 64              | 48  | 192      | $3.912                         | $2,816.64            | $34,269.12          |
 | g6.12xlarge   | 96              | 48  | 192      | $4.6016                        | $3,313.15            | $40,310.02          |
 
-## Project Cloud Cost
+## Projected Cloud Cost
 
 Cost to host each model on these instances shown below - this is strictly estimated adequacy based on experiment outcomes comparing several model parameters/sequence length requirements.
 | **Model** | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
@@ -138,6 +138,6 @@ The highest token processing rate was executed by [BAAI/bge-base-en-v1.5](https:
 
 Assuming a correlation in performance with other models that have near **137M parameters**, this may be an adequate GPU for certain use cases.
 
-### **4. Significant savings purchased hardware for on-premise deployment**
+### **4. Significant savings purchasing hardware for on-premise deployment**
 
 The costs seem to be very inflated for GPU instances on AWS. With cost of electricity considered, you can look at around a `2x savings` when you purchase and deploy the hardware yourself.
