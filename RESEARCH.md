@@ -63,19 +63,27 @@ This model sits at #4 in the MTEB and has 7.1B parameters. It also has a very de
 - Disambiguating terms that are lexically similar but semantically different (ie: river "bank" / finanical "bank" , "ruler" instrument / "ruler" of country)
 - Targeting towards personalized or context specific embedding spaces. Can largely alter sortings/rankings, seen as similar to `bq` in technologies like SOLR (Apache Lucene)
 
+---
+
 ### Above average model - [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct)
 
 This model has 1.776B parameters, which deliver high quality embeddings (#17 on the MTEB). It does require higher resources/cost, but can be mitigated by capping the sequence length to a lower maximum (ie: `8192`).
 
 This model also has the same dimensionality as Open AI's ada-002 model. This presents an easy migration strategy for those currently on that model.
 
+---
+
 ### Noteworthy model - [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)
 
 This model has 434M parameters, so its likely to run in lower cost environments. It also has a 8192 max sequence length, giving it the ability to handle a wide variety of use cases. The dimensionality falls a little bit short of the other high ranking models. This model is #29 on the MTEB leaderboard as of 1/12/2025, which is above all of Open AI's current offerings.
 
+---
+
 ### Lacking in usability models - [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) and [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)
 
 I think both the models are largely unusuable because of their `512 max sequence limitation`.
+
+---
 
 <br></br>
 
