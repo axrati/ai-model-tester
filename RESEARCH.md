@@ -136,9 +136,9 @@ These performances can be acheieved for `$1600-$2,600 per year`.
 
 For lower sequence lengths (e.g., **10 to 100 tokens**), there is high variability in tokenization and inference time. This was shown to stabilize at higher sequence lengths (500+).
 
-### **2. Exponential growth in latency with longer sequence lengths**
+### **2. Linear growth in latency with longer sequence lengths**
 
-Latency scales non-linearly with sequence length, particularly for **Alibaba-NLP/gte-Qwen2-1.5B-instruct**, where processing 500 tokens takes 2.2 seconds and 1000 tokens takes 4.3 seconds, representing nearly a **2x increase** in time. This exponential growth is evident across all models.
+Latency scales linearly with sequence length, particularly for **Alibaba-NLP/gte-Qwen2-1.5B-instruct**, where processing 500 tokens takes 2.2 seconds and 1000 tokens takes 4.3 seconds, representing a ~2x increase in time.
 
 ### **3. 24GB GPU produces decent tokens per minute rate for [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)**
 
