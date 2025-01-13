@@ -42,15 +42,16 @@ Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf
 ## Projected Cloud Cost
 
 Cost to host each model on these instances shown below - this is strictly estimated adequacy based on experiment outcomes comparing several model parameters/sequence length requirements.
-| **Model** | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
-| ------------------------------------------------------------------------------------------------- | ------------: | --------------: | --------------------- | -------------------------------- | ------------------------------ | ----------------------------- | ----------------------------- |
-| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl) | 4 | 7.111B | 96 | $2,816 / $34,269 | - | - | - |
-| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct) | 7 | 7.611B | 96 | $2,816 / $34,269 | - | - | - |
-| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) | 17 | 1.776B | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | - |
-| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5) | 29 | 434M | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
-| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5) | 51 | 137M | 48 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
-| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) | 47 | 335M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
-| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5) | 55 | 109M | 24 | $2,816 / $34,269 | $1,614 / $19,640 | $1,339 / $16,302 | $703.87 / $8,563 |
+
+| **Model**                                                                                         | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g6.12xlarge** ($/Month/Year) | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
+| ------------------------------------------------------------------------------------------------- | ------------: | -------------: | --------------------- | ------------------------------ | -------------------------------- | ------------------------------ | ----------------------------- | ----------------------------- |
+| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                         |             4 |         7.111B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
+| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)     |             7 |         7.611B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
+| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) |            17 |         1.776B | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | -                             |
+| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)             |            29 |           434M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)               |            51 |           137M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                           |            47 |           335M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                             |            55 |           109M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
 
 <br></br>
 
