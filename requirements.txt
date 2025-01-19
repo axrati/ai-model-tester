@@ -2,3 +2,4 @@ nvidia-ml-py3
 transformers
 torch
 pytz
+sentencepiece
