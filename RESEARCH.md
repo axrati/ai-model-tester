@@ -4,15 +4,16 @@ This is an analysis of open source embedding models in the market today. The mod
 
 ## Models
 
-| **Model**                                                                                         | **MTEB Ranking** | **Parameters** | **Dimensions** | **Max Tokens** |
-| ------------------------------------------------------------------------------------------------- | ---------------- | -------------- | -------------- | -------------- |
-| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                         | 4                | 7.111B         | 4096           | 32,768         |
-| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                           | 47               | 335M           | 1024           | 512            |
-| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                             | 55               | 109M           | 768            | 512            |
-| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)     | 7                | 7.611B         | 3584           | 131,072        |
-| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) | 17               | 1.776B         | 1536           | 131,072        |
-| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)             | 29               | 434M           | 1024           | 8,192          |
-| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)               | 51               | 137M           | 768            | 8,192          |
+| **Model**                                                                                                 | **MTEB Ranking** | **Parameters** | **Dimensions** | **Max Tokens** |
+| --------------------------------------------------------------------------------------------------------- | ---------------- | -------------- | -------------- | -------------- |
+| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                                 | 4                | 7.111B         | 4096           | 32,768         |
+| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                                   | 47               | 335M           | 1024           | 512            |
+| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                                     | 55               | 109M           | 768            | 512            |
+| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)             | 7                | 7.611B         | 3584           | 131,072        |
+| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct)         | 17               | 1.776B         | 1536           | 131,072        |
+| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)                     | 29               | 434M           | 1024           | 8,192          |
+| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)                       | 51               | 137M           | 768            | 8,192          |
+| [sentence-transformers/all-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2) | 149              | 33M            | 384            | 512            |
 
 ### Open AI Reference Point
 
@@ -43,15 +44,16 @@ Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf
 
 Cost to host each model on these instances shown below - this is strictly estimated adequacy based on experiment outcomes comparing several model parameters/sequence length requirements.
 
-| **Model**                                                                                         | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g6.12xlarge** ($/Month/Year) | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
-| ------------------------------------------------------------------------------------------------- | ------------: | -------------: | --------------------- | ------------------------------ | -------------------------------- | ------------------------------ | ----------------------------- | ----------------------------- |
-| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                         |             4 |         7.111B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
-| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)     |             7 |         7.611B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
-| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct) |            17 |         1.776B | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | -                             |
-| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)             |            29 |           434M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
-| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)               |            51 |           137M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
-| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                           |            47 |           335M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
-| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                             |            55 |           109M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| **Model**                                                                                                 | **MTEB Rank** | **Parameters** | **Instance GPU (GB)** | **g6.12xlarge** ($/Month/Year) | **g4dn.12xlarge** ($/Month/Year) | **g6e.2xlarge** ($/Month/Year) | **g6e.xlarge** ($/Month/Year) | **g6.2xlarge** ($/Month/Year) |
+| --------------------------------------------------------------------------------------------------------- | ------------: | -------------: | --------------------- | ------------------------------ | -------------------------------- | ------------------------------ | ----------------------------- | ----------------------------- |
+| [BAAI/bge-en-icl](https://huggingface.co/BAAI/bge-en-icl)                                                 |             4 |         7.111B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
+| [Alibaba-NLP/gte-Qwen2-7B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-7B-instruct)             |             7 |         7.611B | 96                    | $3,313 / $40,310               | $2,816 / $34,269                 | -                              | -                             | -                             |
+| [Alibaba-NLP/gte-Qwen2-1.5B-instruct](https://huggingface.co/Alibaba-NLP/gte-Qwen2-1.5B-instruct)         |            17 |         1.776B | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | -                             |
+| [Alibaba-NLP/gte-large-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-large-en-v1.5)                     |            29 |           434M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [Alibaba-NLP/gte-base-en-v1.5](https://huggingface.co/Alibaba-NLP/gte-base-en-v1.5)                       |            51 |           137M | 48                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5)                                   |            47 |           335M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)                                     |            55 |           109M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
+| [sentence-transformers/all-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2) |           149 |            33M | 24                    | $3,313 / $40,310               | $2,816 / $34,269                 | $1,614 / $19,640               | $1,339 / $16,302              | $703.87 / $8,563              |
 
 <br></br>
 
@@ -80,9 +82,15 @@ This model has 434M parameters, so its likely to run in lower cost environments.
 
 ---
 
-### Lacking in usability models - [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) and [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)
+### Small sequence, small hardware models - [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) and [BAAI/bge-base-en-v1.5](https://huggingface.co/BAAI/bge-base-en-v1.5)
 
-I think both the models are largely unusuable because of their `512 max sequence limitation`.
+I think both the models are limited because of their `512 max sequence limitation`, but for smaller usecases you can get a decent amount of juice for the squeeze cost wise.
+
+---
+
+### The POC model - [sentence-transformers/all-MiniLM-L12-v2](https://huggingface.co/sentence-transformers/all-MiniLM-L12-v2)
+
+For ~90% less parameters than the [BAAI/bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) (#45), you can retain quite a bit of rank (#149). This model can run on most basic laptops today on CPU.
 
 ---
 
