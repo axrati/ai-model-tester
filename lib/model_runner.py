@@ -115,7 +115,8 @@ Total Runs: {self.model_config.runs}
                 total_runs.extend(runstats)
             run_stats_dicts = [asdict(stat) for stat in size_runs]
             current_datetime_str = date_string(datetime.now())
-            filename = f"run_____{self.model_config.name.split('/')[len(self.model_config.name.split('/'))-1]}_____{size}_____{self.model_config.runs}_____{self.model_config.permutations}_____{current_datetime_str}.json"
+            filename = f"run_____{self.model_config.name.split('/')[len(self.model_config.name.split('/'))-1]}_____{size}_____{self.model_config.runs}_____{self.model_config.permutations}_____{current_datetime_str}"
+            filename = filename + ".json"
             with open(filename, "w") as f:
                 json.dump(run_stats_dicts, f, default=str, indent=4)
         return total_runs
