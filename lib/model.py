@@ -92,6 +92,10 @@ class Model:
                     base, padding=True, truncation=True, return_tensors="pt"
                 ).to(self.device)["input_ids"][0]
             )
+            print(
+                f"""AMT : {amount}    SIZE: {size}""",
+                end="\r",
+            )
 
         tokenized = self.tokenizer(
             base, padding=True, truncation=True, return_tensors="pt"
