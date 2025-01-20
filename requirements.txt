@@ -3,3 +3,4 @@ transformers
 torch
 pytz
 sentencepiece
+protobuf
