@@ -34,8 +34,8 @@ models: list[ModelConfig] = [
     ModelConfig(
         name="Alibaba-NLP/gte-Qwen2-1.5B-instruct",
         token_lengths=[100, 250, 1000, 2500, 5000, 8000, 15000, 30000],
-        permutations=10,
-        runs=10,
+        permutations=100,
+        runs=100,
     ),
     ModelConfig(
         name="Alibaba-NLP/gte-large-en-v1.5",
