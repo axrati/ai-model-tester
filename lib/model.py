@@ -84,7 +84,9 @@ class Model:
             )["input_ids"][0]
         )
         while size < amount:
-            base = base + random.choice(text_corpus)
+            ADDITIVE = 25
+            for ad in range(ADDITIVE):
+                base = base + random.choice(text_corpus)
             size = len(
                 self.tokenizer(
                     base, padding=True, truncation=True, return_tensors="pt"
