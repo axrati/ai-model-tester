@@ -33,7 +33,7 @@ These are the instance types that are capable of running these models. There are
 Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf8fefea182f (64-bit (x86)) / ami-0ed05a5c0d640bb4b (64-bit (Arm))
 
 | Instance Type | GPU Memory (GB) | CPU | RAM (GB) | On-Demand Price per Hour (USD) | Cost per Month (USD) | Cost per Year (USD) |
-| ------------- | --------------- | --- | -------- | ------------------------------ | -------------------- | ------------------- |
+| ------------- | --------------- | --- | -------- | ------------------------------ | -------------------- | ------------------- | 
 | g6.2xlarge    | 24              | 8   | 32       | $0.9776                        | $703.87              | $8,563.78           |
 | g6e.xlarge    | 48              | 4   | 32       | $1.861                         | $1,339.92            | $16,302.36          |
 | g6e.2xlarge   | 48              | 8   | 64       | $2.24208                       | $1,614.30            | $19,640.62          |
