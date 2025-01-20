@@ -84,7 +84,7 @@ class Model:
             )["input_ids"][0]
         )
         while size < amount:
-            ADDITIVE = 25
+            ADDITIVE = 250
             for ad in range(ADDITIVE):
                 base = base + random.choice(text_corpus)
             size = len(
