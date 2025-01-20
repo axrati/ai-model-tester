@@ -85,7 +85,10 @@ class Model:
         )
         while size < amount:
             ADDITIVE = 250
-            for ad in range(ADDITIVE):
+            if amount > 1000:
+                for ad in range(ADDITIVE):
+                    base = base + random.choice(text_corpus)
+            else:
                 base = base + random.choice(text_corpus)
             size = len(
                 self.tokenizer(

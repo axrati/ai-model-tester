@@ -15,13 +15,21 @@ models: list[ModelConfig] = [
     # ),
     ModelConfig(
         name="BAAI/bge-large-en-v1.5",
-        token_lengths=[100, 250, 500, 1000, 2500, 5000, 8000],
+        token_lengths=[
+            100,
+            250,
+            500,
+        ],
         permutations=100,
         runs=100,
     ),
     ModelConfig(
         name="BAAI/bge-base-en-v1.5",
-        token_lengths=[100, 250, 500, 1000, 2500, 5000, 8000],
+        token_lengths=[
+            100,
+            250,
+            500,
+        ],
         permutations=100,
         runs=100,
     ),
