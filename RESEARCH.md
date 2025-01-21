@@ -33,7 +33,7 @@ These are the instance types that are capable of running these models. There are
 Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.5 (Ubuntu 22.04) - ami-00dddcf8fefea182f (64-bit (x86)) / ami-0ed05a5c0d640bb4b (64-bit (Arm))
 
 | Instance Type | GPU Memory (GB) | CPU | RAM (GB) | On-Demand Price per Hour (USD) | Cost per Month (USD) | Cost per Year (USD) |
-| ------------- | --------------- | --- | -------- | ------------------------------ | -------------------- | ------------------- | 
+| ------------- | --------------- | --- | -------- | ------------------------------ | -------------------- | ------------------- |
 | g6.2xlarge    | 24              | 8   | 32       | $0.9776                        | $703.87              | $8,563.78           |
 | g6e.xlarge    | 48              | 4   | 32       | $1.861                         | $1,339.92            | $16,302.36          |
 | g6e.2xlarge   | 48              | 8   | 64       | $2.24208                       | $1,614.30            | $19,640.62          |
@@ -162,3 +162,122 @@ The costs seem to be very inflated for GPU instances on AWS. With cost of electr
 <br></br>
 <br></br>
 <br></br>
+
+# G6.12X LARGE TESTING
+
+      96 GB GPU
+      48 CPU
+      192 GB MEMORY
+
+## Alibaba-NLP/gte-Qwen2-1.5B-instruct
+
+Based off of 100 runs.
+
+- Performance peak at 1K tokens
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 5.0511                | ~1979             |
+| 250.0           | 25000.0                | 9.3451                | ~2675             |
+| 1000.0          | 100000.0               | 32.0715               | ~3188             |
+| 2500.0          | 250000.0               | 98.8960               | ~2527             |
+| 5000.0          | 500000.0               | 201.7642              | ~2478             |
+| 7500.0          | 750000.0               | 319.8190              | ~2345             |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 1625000      | 78.5158               | 2096.47           |
+| Tokenizing | 1625000      | 588.4311              | 2761.58           |
+
+---
+
+## BAAI/bge-base-en-v1.5
+
+Based off of 100 runs.
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 0.5502                | ~18175            |
+| 250.0           | 25000.0                | 0.7323                | ~34139            |
+| 500.0           | 50000.0                | 1.2030                | ~41562            |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 85000        | 1.5685                | 54191             |
+| Tokenizing | 85000        | 0.9170                | 92693             |
+
+---
+
+## BAAI/bge-large-en-v1.5
+
+Based off of 100 runs.
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 1.4558                | ~6869             |
+| 250.0           | 25000.0                | 2.1860                | ~11436            |
+| 500.0           | 50000.0                | 4.0974                | ~12202            |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 85000        | 3.1650                | 26856             |
+| Tokenizing | 85000        | 4.5744                | 18581             |
+
+---
+
+## Alibaba-NLP/gte-base-en-v1.5
+
+Based off of 100 runs.
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 0.6889                | ~14515            |
+| 250.0           | 25000.0                | 0.9021                | ~27713            |
+| 500.0           | 50000.0                | 1.9039                | ~26261            |
+| 1000.0          | 100000.0               | 4.1895                | ~23869            |
+| 2500.0          | 250000.0               | 12.8993               | ~19380            |
+| 5000.0          | 500000.0               | 31.4449               | ~15900            |
+| 7500.0          | 750000.0               | 56.2406               | ~13335            |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 1685000      | 4.7566                | 354244            |
+| Tokenizing | 1685000      | 103.5126              | 16278             |
+
+---
+
+## Alibaba-NLP/gte-large-en-v1.5
+
+Based off of 100 runs.
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 1.7193                | ~5816             |
+| 250.0           | 25000.0                | 3.7472                | ~66716            |
+| 500.0           | 50000.0                | 6.2924                | ~7946             |
+| 1000.0          | 100000.0               | 12.3111               | ~8122             |
+| 2500.0          | 250000.0               | 38.6131               | ~6474             |
+| 5000.0          | 500000.0               | 94.2031               | ~5307             |
+| 7500.0          | 750000.0               | 168.7148              | ~4445             |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 1685000      | 9.3177                | ~180838           |
+| Tokenizing | 1685000      | 316.2833              | ~5327             |
+
+---
+
+## sentence-transformers/all-MiniLM-L12-v1
+
+Based off of 100 runs.
+
+| Sequence Length | Total Tokens Processed | Total Completion Time | Tokens Per Second |
+| --------------- | ---------------------- | --------------------- | ----------------- |
+| 100.0           | 10000.0                | 0.5539                | ~18053            |
+| 250.0           | 25000.0                | 0.5520                | ~45289            |
+| 500.0           | 50000.0                | 0.6064                | ~82453            |
+
+| Stage      | Total Tokens | Total Completion Time | Tokens Per Second |
+| ---------- | ------------ | --------------------- | ----------------- |
+| Inference  | 85000        | 1.5566                | ~54606            |
+| Tokenizing | 85000        | 0.1557                | ~545921           |

@@ -138,8 +138,6 @@ class Model:
         Args:
             texts (list of str): List of strings to embed.
 
-        Returns:
-            torch.Tensor: Tensor of embeddings with shape (len(texts), embedding_dim).
         """
         try:
             runstats = []

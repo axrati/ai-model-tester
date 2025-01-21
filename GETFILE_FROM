@@ -1,1 +1,1 @@
-scp -i test-gpu.pem ubuntu@54.237.228.243:/home/ubuntu/PROJECT/ai-model-tester/run* outputs/g6e.xlarge/test.json
+scp -i test-gpu.pem ubuntu@IPADDRESS:/home/ubuntu/PROJECT/ai-model-tester/run* outputs/g6.12xlarge
